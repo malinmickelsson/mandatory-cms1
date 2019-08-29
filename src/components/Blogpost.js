@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ const Blogpost = () => {
         useEffect(() => {
         
             
-    axios.get("http://192.168.99.102:8080/api/collections/get/Svampar")
+    axios.get("http://192.168.99.102:8080/api/collections/get/BLOGPOST")
                    
     
      .then(res => {
@@ -25,7 +25,7 @@ const Blogpost = () => {
     
     .catch(function (error) {
                         
-    alert('Error fetching the api')
+        console.log('Error fetching the api')
                     });
             
       
@@ -42,20 +42,23 @@ const Blogpost = () => {
     <div>
                
      <table>
+         <tbody>
                     <tr>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Date</th>
                         <th>Post</th>/th>
                     </tr>
+
                     {results.map((result) =>
                         <tr key={result._id}>
                             <td>{result.title}</td>
                             <td>{result.name}</td>
-                            <td>{result.date}</td>
-                            <td>{result.post}/5</td>
+                            <td>{result.Date}</td>
+                            <td>{result.post}</td>
                         </tr>
                     )}
+                    </tbody>
                 </table>
             </div>
         )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 
@@ -11,7 +11,7 @@ const Author = () => {
         useEffect(() => {
         
             
-    axios.get("http://192.168.99.102:8080/api/collections/get/Svampar")
+    axios.get("http://192.168.99.102:8080/api/collections/get/AUTHOR")
                    
     
      .then(res => {
@@ -25,7 +25,7 @@ const Author = () => {
     
     .catch(function (error) {
                         
-    alert('Error fetching the api')
+        console.log('Error fetching the api')
                     });
             
       
@@ -42,6 +42,7 @@ const Author = () => {
     <div>
                
      <table>
+     <tbody>
                     <tr>
                         <th>Name</th>
                         <th>Abouth the author</th>
@@ -52,9 +53,10 @@ const Author = () => {
                         <tr key={result._id}>
                             <td>{result.name}</td>
                             <td>{result.about}</td>
-                            <td><img src={"http://192.168.99.102:8080/" + result.img.path}></img></td>
+                            <td><img src={"http://192.168.99.102:8080/" + result.img.path} alt={"avatar"}></img></td>
                         </tr>
                     )}
+                    </tbody>
                 </table>
             </div>
         )

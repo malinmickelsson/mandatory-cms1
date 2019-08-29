@@ -16,8 +16,6 @@ const App = () => {
         
             
     axios.get("http://192.168.99.102:8080/api/collections/get/labb")
-                   
-    
      .then(res => {
                         
     console.log(res.data.entries);
@@ -29,14 +27,14 @@ const App = () => {
     
     .catch(function (error) {
                         
-    alert('Error fetching the api')
+        console.log('Error fetching the api')
                     });
             
       
       }, [])
         
     
-    console.log("logging results: ");
+    console.log("api results: ");
        
      console.log(results);
        
@@ -55,7 +53,7 @@ const App = () => {
                         <tr key={result._id}>
                             <td>{result.title}</td>
                             <td>{result.name}</td>
-                            <td>{result.date}</td>
+                            <td>{result.Date}</td>
                             
                         </tr>
                     )}
@@ -70,7 +68,7 @@ ReactDOM.render(
       <Route exact path="/" component={App} />
       <Route path="/Blogpost" component={Blogpost} />
       <Route path="/Author" component={Author} />
-      <Route component={404} />
+      {/* <Route component={404} /> */}
     </Switch>
   </Router>
 
