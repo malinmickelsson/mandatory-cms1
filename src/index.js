@@ -15,7 +15,7 @@ const App = () => {
         useEffect(() => {
         
             
-    axios.get("http://192.168.99.102:8080/api/collections/get/labb")
+    axios.get("http://192.168.99.102:8080/api/collections/get/BLOGPOST")
      .then(res => {
                         
     console.log(res.data.entries);
@@ -53,7 +53,7 @@ const App = () => {
                         <tr key={result._id}>
                             <td>{result.title}</td>
                             <td>{result.name}</td>
-                            <td>{result.Date}</td>
+                            <td>{result.date}</td> {/* vill ha en riktig Date här - innbyggd? */}
                             
                         </tr>
                     )}

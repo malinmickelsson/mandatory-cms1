@@ -54,7 +54,7 @@ const Blogpost = () => {
                         <tr key={result._id}>
                             <td>{result.title}</td>
                             <td>{result.name}</td>
-                            <td>{result.Date}</td>
+                            <td>{result.date}</td>  {/* vill ha en riktig Date här - innbyggd? */}
                             <td>{result.post}</td>
                         </tr>
                     )}
