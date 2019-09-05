@@ -3,74 +3,38 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios';
 
-import './index.css';
-import Blogpost from './components/Blogpost.js';
+import Main from './components/Main.js';
+import Article from './components/Article.js';
 import Author from './components/Author.js'; 
-//import 404 from './component/404.js';
+// import MyMarkdown from './components/markdown/MyMarkdown';
 
 const App = () => {
-    
-    
     const [results, setResult] = useState([]);
         useEffect(() => {
-        
-            
-    axios.get("http://192.168.99.102:8080/api/collections/get/BLOGPOST")
-     .then(res => {
-                        
-    console.log(res.data.entries);
-                        
-                       
-     setResult(res.data.entries)
-                    })
-                    
-    
-    .catch(function (error) {
-                        
-        console.log('Error fetching the api')
-                    });
-            
-      
-      }, [])
-        
-    
-    console.log("api results: ");
-       
-     console.log(results);
-       
-    
-     return (
-            
-    <div>
                
-     <table>
-                    <tr>
-                        <th>Title</th>
-                        <th>Name</th>
-                        <th>Date</th>                        
-                    </tr>
-                    {results.map((result) =>
-                        <tr key={result._id}>
-                            <td>{result.title}</td>
-                            <td>{result.name}</td>
-                            <td>{result.date}</td> {/* vill ha en riktig Date här - innbyggd? */}
-                            
-                        </tr>
-                    )}
-                </table>
-            </div>
-        )
-    }
+    axios.get("http://192.168.99.102:8080/api/collections/get/Article")  
+        .then(res => {                   
+            console.log(res.data.entries);                   
+                       
+            setResult(res.data.entries)
+        })
+        .catch(function (error) {             
+            console.log('Error fetching the api')
+        });
+    }, [])
+        
+    console.log("logging results: "); 
+    console.log(results);
+       
+     return (
+        <Router>
+        <Switch>
+          <Route exact path="/" render={() => <Main results={results} />} />
+          <Route path="/Article" render={() => <Article results={results} />} />
+          <Route path="/Author" component={Author} />
+        </Switch>
+      </Router>
+    )
+}
 
-ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/Blogpost" component={Blogpost} />
-      <Route path="/Author" component={Author} />
-      {/* <Route component={404} /> */}
-    </Switch>
-  </Router>
-
-
-  , document.getElementById('root')); 
+ReactDOM.render( <App />, document.getElementById('root')); 
