@@ -7,14 +7,12 @@ import Article from "./components/Article.js";
 import Author from "./components/Author.js";
 
 const App = () => {
-  
-
   return (
     <Router>
       <Switch>
-	  	<Route exact path="/" component={Main} />
+        <Route exact path="/" component={Main} />
         <Route path="/Article/:id" component={Article} />
-        <Route path="/Athour" component={Author} />
+        <Route path="/Author" component={Author} />
       </Switch>
     </Router>
   );

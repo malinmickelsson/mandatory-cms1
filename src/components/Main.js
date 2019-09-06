@@ -14,9 +14,7 @@ const Main = () => {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.99.102:8080/api/collections/get/Article?limit=${limit}&skip=${limit *
-          page -
-          limit}`
+        `http://192.168.99.102:8080/api/collections/get/Article?limit=${limit}&skip=${limit*page-limit}`
       )
       .then(res => {
         console.log(res.data.entries);
@@ -32,8 +30,8 @@ const Main = () => {
   return (
     <body>
       <div className="link">
-        <Link to="/Articles">Articles</Link>
-        <Link to="/Authors">Authors</Link>
+        <Link to="/Article">Articles</Link>
+        <Link to="/Author">Authors</Link>
       </div>
 
       {results.map(result => (
