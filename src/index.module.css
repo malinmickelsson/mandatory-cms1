@@ -9,8 +9,14 @@ img {
     width: 200px;
 }
 .link {
-    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    width: 25%;
+    margin-left: 20px;
+    padding: 20px;
+    text-align: center;
 }
+
 .title {
     text-decoration: underline;
 }

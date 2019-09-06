@@ -3,22 +3,25 @@ import axios from "axios";
 import styles from "../index.module.css";
 
 const Author = () => {
-  const [results, setResult] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://192.168.99.102:8080/api/collections/get/Author")
-      .then(res => {
-        console.log(res.data.entries);
 
-        setResult(res.data.entries);
-      })
-      .catch(function(error) {
-        console.log("Error fetching the api");
-      });
-  }, []);
-
-  console.log("logging results: ");
-  console.log(results);
+	const [results, setResult] = useState([]);
+  
+	useEffect(() => {
+  
+	  axios.get("http://192.168.99.100:8080/api/collections/get/Arthur")
+		.then(res => {
+		  console.log(res.data.entries);
+  
+		  setResult(res.data.entries)
+		})
+		.catch(function (error) {
+		  alert('Error fetching the api')
+		});
+  
+	}, [])
+  
+	console.log("Getting the following result");
+	console.log(results);
 
   return (
     <div>
